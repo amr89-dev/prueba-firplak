@@ -19,16 +19,9 @@ const DocumentoEntrega = db.define("DocumentoEntrega", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  clienteId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
+
   destino: {
     type: DataTypes.STRING,
-    allowNull: false,
-  },
-  guiaTransporteId: {
-    type: DataTypes.INTEGER,
     allowNull: false,
   },
 });

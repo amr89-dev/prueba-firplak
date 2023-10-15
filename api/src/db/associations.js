@@ -6,7 +6,7 @@ const Token = require("./models/token.model");
 const Transportadora = require("./models/trasportadora.model");
 const User = require("./models/user.model");
 
-const associations = (db) => {
+const associations = () => {
   Cliente.hasMany(Guia, { foreignKey: "clienteId" });
   Cliente.hasMany(DocumentoEntrega, { foreignKey: "clienteId" });
   Cliente.belongsTo(User, {
