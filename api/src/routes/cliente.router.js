@@ -44,7 +44,7 @@ customerRouter.get(
   }
 );
 
-customerRouter.put(
+customerRouter.patch(
   "/:id",
   validatorHandler(getCustomerSchema, "params"),
   validatorHandler(updateCustomerSchema, "body"),

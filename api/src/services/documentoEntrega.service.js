@@ -5,7 +5,9 @@ class DocumentoEntregaService {
   constructor() {}
 
   async find() {
-    const rta = await DocumentoEntrega.findAll();
+    const rta = await DocumentoEntrega.findAll({
+      include: ["cliente"],
+    });
     return rta;
   }
 
@@ -18,7 +20,11 @@ class DocumentoEntregaService {
   }
 
   async create(data) {
-    const newDocumentoEntrega = await DocumentoEntrega.create(data);
+    const documento = {
+      ...data,
+      fechaDespacho: new Date(data.fechaDespacho),
+    };
+    const newDocumentoEntrega = await DocumentoEntrega.create(documento);
     return newDocumentoEntrega;
   }
 

@@ -11,15 +11,13 @@ const Guia = db.define("Guia", {
   numeroConsecutivo: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
+    unique: true,
   },
   fechaDespacho: {
     type: DataTypes.DATE,
     allowNull: false,
   },
-  clienteId: {
-    type: DataTypes.UUID,
-    allowNull: false,
-  },
+
   destino: {
     type: DataTypes.STRING,
     allowNull: false,

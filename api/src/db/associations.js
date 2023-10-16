@@ -8,7 +8,10 @@ const User = require("./models/user.model");
 
 const associations = () => {
   Cliente.hasMany(Guia, { foreignKey: "clienteId" });
-  Cliente.hasMany(DocumentoEntrega, { foreignKey: "clienteId" });
+  Cliente.hasMany(DocumentoEntrega, {
+    foreignKey: "clienteId",
+    allowNull: false,
+  });
   Cliente.belongsTo(User, {
     foreignKey: {
       field: "userId",
@@ -17,10 +20,15 @@ const associations = () => {
     },
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
+    as: "user",
   });
 
-  DocumentoEntrega.belongsTo(Cliente, { foreignKey: "clienteId" });
-  DocumentoEntrega.belongsTo(Guia, { foreignKey: "guiaTransporteId" });
+  DocumentoEntrega.belongsTo(Cliente, {
+    foreignKey: "clienteId",
+    allowNull: false,
+    as: "cliente",
+  });
+  DocumentoEntrega.belongsTo(Guia, { foreignKey: "guiaId", allowNull: false });
   DocumentoEntrega.hasOne(PruebaEntrega, {
     foreignKey: "documentoEntregaId",
     onDelete: "CASCADE",
@@ -31,7 +39,7 @@ const associations = () => {
   Guia.belongsTo(Transportadora, { foreignKey: "transportadoraId" });
   Guia.hasMany(DocumentoEntrega, { foreignKey: "guiaId" });
 
-  PruebaEntrega.belongsTo(Guia, { foreignKey: "guiaTransporteId" });
+  PruebaEntrega.belongsTo(Guia, { foreignKey: "guiaId" });
   PruebaEntrega.belongsTo(DocumentoEntrega, {
     foreignKey: "documentoEntregaId",
   });
@@ -45,6 +53,7 @@ const associations = () => {
   });
   User.hasOne(Cliente, {
     foreignKey: "userId",
+    as: "customer",
   });
 };
 

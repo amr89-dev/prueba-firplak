@@ -16,13 +16,17 @@ const DocumentoEntrega = db.define("DocumentoEntrega", {
     type: DataTypes.DATE,
   },
   numeroConsecutivo: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     allowNull: false,
+    autoIncrement: true,
   },
 
   destino: {
     type: DataTypes.STRING,
     allowNull: false,
+  },
+  productos: {
+    type: DataTypes.STRING,
   },
 });
 

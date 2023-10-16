@@ -2,21 +2,21 @@ const Joi = require("joi");
 
 const id = Joi.string().uuid();
 const tipoPrueba = Joi.string();
-const guia_transporte_id = Joi.number().integer();
-const documento_entrega_id = Joi.number().integer();
+const guiaId = Joi.string().uuid();
+const documentoEntregaId = Joi.string().uuid();
 const novedades = Joi.string();
 
 const createPruebaEntregaSchema = Joi.object({
   tipoPrueba: tipoPrueba.required(),
-  guia_transporte_id: guia_transporte_id.required(),
-  documento_entrega_id: documento_entrega_id.required(),
+  guiaId: guiaId.required(),
+  documentoEntregaId: documentoEntregaId.required(),
   novedades: novedades,
 });
 
 const updatePruebaEntregaSchema = Joi.object({
   tipoPrueba: tipoPrueba,
-  guia_transporte_id: guia_transporte_id,
-  documento_entrega_id: documento_entrega_id,
+  guiaId: guiaId,
+  documentoEntregaId: documentoEntregaId,
   novedades: novedades,
 });
 
