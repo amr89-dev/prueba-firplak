@@ -1,0 +1,12 @@
+.dropdown::before {
+  content: "";
+  position: absolute;
+  top: -0.68rem;
+  right: 1rem;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  background-color: white;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+}

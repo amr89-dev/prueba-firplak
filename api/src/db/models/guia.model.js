@@ -17,10 +17,14 @@ const Guia = db.define("Guia", {
     type: DataTypes.DATE,
     allowNull: false,
   },
-
   destino: {
     type: DataTypes.STRING,
     allowNull: false,
+  },
+  estado: {
+    type: DataTypes.ENUM("Generada", "En Ruta", "Entregado", "Novedad"),
+    allowNull: false,
+    defaultValue: "Generada",
   },
 });
 

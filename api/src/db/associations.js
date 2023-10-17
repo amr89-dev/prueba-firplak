@@ -28,7 +28,11 @@ const associations = () => {
     allowNull: false,
     as: "cliente",
   });
-  DocumentoEntrega.belongsTo(Guia, { foreignKey: "guiaId", allowNull: false });
+  DocumentoEntrega.belongsTo(Guia, {
+    foreignKey: "guiaId",
+    allowNull: false,
+    as: "documento",
+  });
   DocumentoEntrega.hasOne(PruebaEntrega, {
     foreignKey: "documentoEntregaId",
     onDelete: "CASCADE",
@@ -37,7 +41,12 @@ const associations = () => {
 
   Guia.belongsTo(Cliente, { foreignKey: "clienteId" });
   Guia.belongsTo(Transportadora, { foreignKey: "transportadoraId" });
-  Guia.hasMany(DocumentoEntrega, { foreignKey: "guiaId" });
+  Guia.hasMany(DocumentoEntrega, {
+    foreignKey: "guiaId",
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+    as: "documento",
+  });
 
   PruebaEntrega.belongsTo(Guia, { foreignKey: "guiaId" });
   PruebaEntrega.belongsTo(DocumentoEntrega, {
@@ -54,6 +63,16 @@ const associations = () => {
   User.hasOne(Cliente, {
     foreignKey: "userId",
     as: "customer",
+  });
+  Transportadora.belongsTo(User, {
+    foreignKey: {
+      field: "userId",
+      allowNull: false,
+      unique: true,
+    },
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+    as: "user",
   });
 };
 

@@ -8,13 +8,13 @@ const PruebaEntrega = db.define("PruebaEntrega", {
     primaryKey: true,
     defaultValue: DataTypes.UUIDV4,
   },
-  tipoPrueba: {
+  urlImagen: {
     type: DataTypes.STRING,
-    allowNull: false,
   },
 
   novedades: {
     type: DataTypes.TEXT,
+    defaultValue: "NO",
   },
 });
 

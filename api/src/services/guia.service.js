@@ -1,11 +1,14 @@
 const boom = require("@hapi/boom");
 const Guia = require("../db/models/guia.model");
+const DocumentoEntrega = require("../db/models/documentoEntrega.model");
 
 class GuiaService {
   constructor() {}
 
   async find() {
-    const rta = await Guia.findAll();
+    const rta = await Guia.findAll({
+      include: ["documento", { model: DocumentoEntrega, as: "documento" }],
+    });
     return rta;
   }
 
@@ -19,6 +22,13 @@ class GuiaService {
 
   async create(data) {
     const newGuiaTransporte = await Guia.create(data);
+    const documentos = data.documentoEntregaId;
+    for (let docId of documentos) {
+      await DocumentoEntrega.update(
+        { guiaId: newGuiaTransporte.id },
+        { where: { id: docId } }
+      );
+    }
     return newGuiaTransporte;
   }
 

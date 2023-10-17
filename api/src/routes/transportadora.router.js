@@ -37,6 +37,7 @@ transportadoraRouter.get(
   async (req, res, next) => {
     try {
       const { id } = req.params;
+
       const transportadora = await service.findOne(id);
       res.status(200).json(transportadora);
     } catch (err) {

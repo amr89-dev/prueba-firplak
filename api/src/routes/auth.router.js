@@ -22,6 +22,7 @@ router.post(
   passport.authenticate("local", { session: false }),
   async (req, res, next) => {
     try {
+      console.log("estoy aqui");
       const user = req.user;
       const payload = {
         role: user.role,

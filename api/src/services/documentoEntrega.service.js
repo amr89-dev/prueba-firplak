@@ -23,6 +23,7 @@ class DocumentoEntregaService {
     const documento = {
       ...data,
       fechaDespacho: new Date(data.fechaDespacho),
+      codVerificacion: Date.now().toString(36),
     };
     const newDocumentoEntrega = await DocumentoEntrega.create(documento);
     return newDocumentoEntrega;

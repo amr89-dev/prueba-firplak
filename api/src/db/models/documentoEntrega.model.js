@@ -28,6 +28,9 @@ const DocumentoEntrega = db.define("DocumentoEntrega", {
   productos: {
     type: DataTypes.STRING,
   },
+  codVerificacion: {
+    type: DataTypes.STRING,
+  },
 });
 
 module.exports = DocumentoEntrega;
