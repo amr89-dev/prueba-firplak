@@ -123,3 +123,14 @@ export const getTransportadoras = async () => {
     return { error: err };
   }
 };
+export const getClientInfo = async (id) => {
+  try {
+    const res = await fetch(`${API_URL}/api/v1/cliente/${id}`);
+    if (!res.ok) throw { status: res.status, statusText: res.statusText };
+    const json = await res.json();
+
+    return json;
+  } catch (err) {
+    return { error: err };
+  }
+};

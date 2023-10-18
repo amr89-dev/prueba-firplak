@@ -2,28 +2,30 @@ import { useContext, useEffect, useState } from "react";
 import "./styles.css";
 import { ClientsContext } from "../../contexts/clientsContex";
 import { TransportadoraContext } from "../../contexts/transportadorasContext";
+import { getClientInfo } from "../../services/api";
 
 export const GuiaDashboard = () => {
   const { clientes } = useContext(ClientsContext);
   const { transportadoras } = useContext(TransportadoraContext);
-  console.log({ transportadoras });
+  const [clienteInfo, setClienteInfo] = useState({});
+  const [clienteToSearch, setClienteToSearch] = useState("");
+  const [transToSearch, setTransToSearch] = useState("");
 
   const [formData, setformData] = useState({
-    cliente: "",
-    documentos: [],
+    clienteId: clienteInfo.id,
+    transportadoraId: "",
+    fechaDespacho: "",
     destino: "",
-    despacho: "",
-    transportadora: "",
+    documentoEntregaId: [],
   });
 
   const handleChange = (e) => {
-    const { name } = e.target;
-    const { value } = e.target;
-    if (name === "documentos") {
-      setformData({
-        ...formData,
-        documentos: [...formData.documentos, value],
-      });
+    const { name, value } = e.target;
+
+    if (name === "cliente") {
+      setClienteToSearch(value);
+    } else if (name === "transportadora") {
+      setTransToSearch(value);
     } else {
       setformData({
         ...formData,
@@ -31,9 +33,17 @@ export const GuiaDashboard = () => {
       });
     }
   };
-  console.log(formData);
+
+  const getInfo = async () => {
+    const clienteId = clientes.find(
+      (cliente) => cliente.nombreCliente === clienteToSearch
+    );
+    const infoCliente = await getClientInfo(clienteId?.id);
+    setClienteInfo(infoCliente);
+  };
+  console.log(clienteInfo);
   useEffect(() => {
-    console.log("cambio el cliente");
+    getInfo();
   }, [formData.cliente]);
 
   return (
@@ -45,7 +55,7 @@ export const GuiaDashboard = () => {
             <label htmlFor="cliente">Cliente:</label>
             <input
               onChange={handleChange}
-              value={formData.cliente}
+              value={clienteToSearch}
               type="text"
               list="clientes"
               id="cliente"
@@ -68,15 +78,14 @@ export const GuiaDashboard = () => {
               type="text"
               list="docu"
               id="documento"
-              className="border-2 rounded border-black sombra w-[96%]"
+              className="border-2 rounded border-black sombra w-[96%] "
               name="documentos"
             />
             <datalist id="docu">
-              {formData.documentos?.map((docu) => {
+              {clienteInfo.DocumentoEntregas?.map((docu) => {
                 return (
                   <option key={docu.id}>
-                    {docu.numeroConsecutivo}
-                    {}
+                    {docu.numeroConsecutivo} - {docu.productos}
                   </option>
                 );
               })}
@@ -110,7 +119,7 @@ export const GuiaDashboard = () => {
             <label htmlFor="transportadora">Transportadora:</label>
             <input
               onChange={handleChange}
-              value={formData.transportadora}
+              value={transToSearch}
               type="text"
               list="trans"
               id="transportadora"
