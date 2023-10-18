@@ -1,11 +1,17 @@
 import AuthContextProvider from "./authContex";
+import ClientsContextProvider from "./clientsContex";
 import ErrorLoadingProvider from "./errorLoadingContex";
+import TransportadoraContextProvider from "./transportadorasContext";
 
 //eslint-disable-next-line
 const MainContextProvider = ({ children }) => {
   return (
     <AuthContextProvider>
-      <ErrorLoadingProvider>{children}</ErrorLoadingProvider>
+      <ClientsContextProvider>
+        <TransportadoraContextProvider>
+          <ErrorLoadingProvider>{children}</ErrorLoadingProvider>
+        </TransportadoraContextProvider>
+      </ClientsContextProvider>
     </AuthContextProvider>
   );
 };

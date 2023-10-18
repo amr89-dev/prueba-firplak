@@ -8,6 +8,7 @@ import SignIn from "./pages/SignIn/SignIn";
 import NotFound from "./pages/NotFound/NotFound";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import { GuiaDashboard } from "./components/GuiaDashboard/GuiaDashboard.jsx";
+import TransportadoraDashboard from "./components/TransportadoraDashboard/TransportadoraDashboard.jsx";
 
 function App() {
   const AppRouter = () => {
@@ -29,6 +30,10 @@ function App() {
             path: "/dashboard/guias",
             element: <GuiaDashboard />,
           },
+          {
+            path: "/dashboard/transportadoras",
+            element: <TransportadoraDashboard />,
+          },
         ],
       },
       {
@@ -44,9 +49,9 @@ function App() {
     return routes;
   };
   return (
-    <>
+    <div className="font-lexen">
       <AppRouter />
-    </>
+    </div>
   );
 }
 

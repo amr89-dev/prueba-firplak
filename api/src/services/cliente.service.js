@@ -1,6 +1,7 @@
 const boom = require("@hapi/boom");
 const Cliente = require("../db/models/cliente.model");
 const bcrypt = require("bcrypt");
+const DocumentoEntrega = require("../db/models/documentoEntrega.model");
 
 class ClienteService {
   constructor() {}
@@ -11,7 +12,9 @@ class ClienteService {
     return rta;
   }
   async findOne(id) {
-    const user = await Cliente.findByPk(id);
+    const user = await Cliente.findByPk(id, {
+      include: [{ model: DocumentoEntrega }],
+    });
     if (!user) {
       throw boom.notFound("Cliente not found");
     }

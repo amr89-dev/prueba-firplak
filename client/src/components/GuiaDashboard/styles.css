@@ -1,0 +1,19 @@
+/* Aplicar un estilo neo brutalista a un input date */
+input[type="date"] {
+  border: 2px solid #000; /* Borde grueso en color negro */
+  background-color: #fff; /* Fondo blanco */
+  color: #000; /* Texto en color negro */
+  font-family: Arial, sans-serif; /* Fuente simple */
+  padding: 8px; /* Espacio interior para el texto */
+  width: 150px; /* Ancho fijo para la caja */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Eliminar las flechas de selección de fecha en algunos navegadores */
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+.sombra {
+  box-shadow: 4px 4px black;
+}

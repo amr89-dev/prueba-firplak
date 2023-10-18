@@ -7,7 +7,14 @@ export default {
     "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        lexen: ["Lexend Mega", "sans-serif"],
+      },
+      boxShadow: {
+        aCus: "4px 4px 4px rgba(0, 0, 0, 0)",
+      },
+    },
   },
   plugins: [flowbitePlugin],
 };

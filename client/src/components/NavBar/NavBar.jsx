@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 import { useAuth } from "../../hooks/useAuth";
 import AvatarDropdown from "../AvatarDropdown/AvatarDropdown";
 
 const NavBar = () => {
   const { isAuthenticated } = useAuth();
-  console.log(isAuthenticated);
+  const location = useLocation().pathname.slice(11);
+
   const [menuIsOpen, setMenuIsOpen] = useState(true);
 
   const links = [];
@@ -22,7 +23,7 @@ const NavBar = () => {
 
   return (
     <nav
-      className={`flex flex-row items-center max-w-screen-lg mx-auto p-2 justify-between h-16 relative  `}
+      className={` flex flex-row items-center w-full  p-2 justify-between h-16 relative border-b-2 border-black  `}
     >
       {!menuIsOpen ? (
         <button className="md:hidden" onClick={toggleMenu}>
@@ -60,7 +61,10 @@ const NavBar = () => {
         </button>
       )}
       <Link to="/" className="">
-        <div className=" font-bold  text-2xl">TraceApp</div>
+        <div className=" font-semibold  text-xl ml-[24px]  ">
+          {location.charAt(0).toLocaleUpperCase().concat(location.slice(1)) ||
+            "Dashboard"}
+        </div>
       </Link>
       <ul
         className={`${
@@ -84,11 +88,7 @@ const NavBar = () => {
         ))}
       </ul>
       <ul className="flex flex-row gap-1 justify-center items-center">
-        {!isAuthenticated ? (
-          <li className="px-2">
-            <Link to="/login">Ingresar</Link>
-          </li>
-        ) : (
+        {!isAuthenticated && (
           <li className="px-2">
             <AvatarDropdown />
           </li>

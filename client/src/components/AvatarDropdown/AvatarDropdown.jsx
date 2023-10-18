@@ -29,7 +29,7 @@ const AvatarDropdown = () => {
         </svg>
       </div>
       <ul
-        className={`absolute border border-black p-4 rounded-lg bg-white dropdown right-[-9px] top-[50px] w-40 z-10 shadow-2xl ${
+        className={`absolute border-2 border-black p-4 rounded-lg bg-white dropdown right-[-9px] top-[50px] w-40 z-10 shadow-2xl ${
           isOpen ? "visible" : "hidden"
         }`}
       >

@@ -1,13 +1,13 @@
-import NavBar from "../../components/NavBar/NavBar";
-import Dashboard from "../Dashboard/Dashboard";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  return (
-    <div>
-      <NavBar />
-      <Dashboard />
-    </div>
-  );
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate("/dashboard");
+  }, []);
+
+  return <div>Home</div>;
 };
 
 export default Home;

@@ -101,3 +101,25 @@ export const retrieveUserInfo = async (accessToken) => {
     return { error: err };
   }
 };
+
+export const getClients = async () => {
+  try {
+    const res = await fetch(`${API_URL}/api/v1/cliente`);
+    if (!res.ok) throw { status: res.status, statusText: res.statusText };
+    const json = await res.json();
+    return json;
+  } catch (err) {
+    return { error: err };
+  }
+};
+export const getTransportadoras = async () => {
+  try {
+    const res = await fetch(`${API_URL}/api/v1/transportadora`);
+    if (!res.ok) throw { status: res.status, statusText: res.statusText };
+    const json = await res.json();
+
+    return json;
+  } catch (err) {
+    return { error: err };
+  }
+};
