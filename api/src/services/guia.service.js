@@ -1,13 +1,19 @@
 const boom = require("@hapi/boom");
 const Guia = require("../db/models/guia.model");
 const DocumentoEntrega = require("../db/models/documentoEntrega.model");
+const Cliente = require("../db/models/cliente.model");
+const Transportadora = require("../db/models/trasportadora.model");
 
 class GuiaService {
   constructor() {}
 
   async find() {
     const rta = await Guia.findAll({
-      include: ["documento", { model: DocumentoEntrega, as: "documento" }],
+      include: [
+        { model: DocumentoEntrega, as: "documento" },
+        { model: Cliente },
+        { model: Transportadora },
+      ],
     });
     return rta;
   }

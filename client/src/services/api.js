@@ -134,3 +134,59 @@ export const getClientInfo = async (id) => {
     return { error: err };
   }
 };
+
+export const crearGuia = async (data) => {
+  try {
+    const res = await fetch(`${API_URL}/api/v1/guia`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok)
+      throw {
+        status: res.status,
+        statusText: res.statusText,
+      };
+    const json = await res.json();
+    return json;
+  } catch (err) {
+    return { error: err };
+  }
+};
+export const getGuias = async () => {
+  try {
+    const res = await fetch(`${API_URL}/api/v1/guia`);
+    if (!res.ok) throw { status: res.status, statusText: res.statusText };
+    const json = await res.json();
+
+    return json;
+  } catch (err) {
+    return { error: err };
+  }
+};
+
+export const patchGuia = async (id, data) => {
+  delete data.isOpen;
+  try {
+    const res = await fetch(`${API_URL}/api/v1/guia/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok)
+      throw {
+        status: res.status,
+        statusText: res.statusText,
+      };
+    const json = await res.json();
+    return json;
+  } catch (err) {
+    return { error: err };
+  }
+};

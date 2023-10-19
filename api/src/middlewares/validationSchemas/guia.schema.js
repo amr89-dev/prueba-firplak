@@ -6,6 +6,7 @@ const fechaDespacho = Joi.string();
 const destino = Joi.string();
 const clienteId = Joi.string().uuid();
 const documentoEntregaId = Joi.array().items(Joi.string().uuid()).min(1);
+const estado = Joi.string();
 
 const createGuiaSchema = Joi.object({
   transportadoraId: transportadoraId.required(),
@@ -19,6 +20,7 @@ const updateGuiaSchema = Joi.object({
   fechaDespacho: fechaDespacho,
   clienteId: clienteId,
   documentoEntregaId: documentoEntregaId,
+  estado,
 });
 
 const getGuiaSchema = Joi.object({

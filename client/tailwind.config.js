@@ -14,6 +14,9 @@ export default {
       boxShadow: {
         aCus: "4px 4px 4px rgba(0, 0, 0, 0)",
       },
+      animation: {
+        ping2: "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite",
+      },
     },
   },
   plugins: [flowbitePlugin],

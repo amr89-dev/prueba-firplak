@@ -5,7 +5,6 @@ const { API_KEY } = process.env;
 
 const checkApiKey = (req, res, next) => {
   const apiKey = req.headers["key"];
-  console.log(API_KEY);
   if (apiKey === API_KEY) {
     next();
   } else {

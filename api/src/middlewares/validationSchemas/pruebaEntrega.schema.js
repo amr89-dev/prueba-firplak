@@ -9,8 +9,8 @@ const novedades = Joi.string();
 const createPruebaEntregaSchema = Joi.object({
   urlImagen: urlImagen.required(),
   guiaId: guiaId.required(),
-  documentoEntregaId: documentoEntregaId.required(),
-  novedades: novedades,
+
+  novedades,
 });
 
 const updatePruebaEntregaSchema = Joi.object({

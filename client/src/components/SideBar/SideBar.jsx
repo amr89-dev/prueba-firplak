@@ -50,7 +50,7 @@ const SideBar = () => {
           </svg>
           <p className=" leading-5 font-medium">Guias</p>
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to="/dashboard/transportadoras"
           id="transportadoras"
           className={`flex w-full py-4 px-5  flex-row justify-start items-center gap-2 hover:bg-gray-700 hover:text-white ${
@@ -73,7 +73,7 @@ const SideBar = () => {
           </svg>
 
           <p className=" leading-5 font-medium">Transportadoras</p>
-        </NavLink>
+        </NavLink> */}
       </nav>
       <Footer />
     </section>

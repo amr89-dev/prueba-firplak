@@ -62,8 +62,11 @@ const NavBar = () => {
       )}
       <Link to="/" className="">
         <div className=" font-semibold  text-xl ml-[24px]  ">
-          {location.charAt(0).toLocaleUpperCase().concat(location.slice(1)) ||
-            "Dashboard"}
+          {location
+            .charAt(0)
+            .toLocaleUpperCase()
+            .concat(location.slice(1))
+            .split("/")[0] || "Dashboard"}
         </div>
       </Link>
       <ul

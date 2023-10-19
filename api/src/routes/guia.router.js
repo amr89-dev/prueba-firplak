@@ -4,8 +4,9 @@ const GuiaTransporteService = require("../services/guia.service");
 const service = new GuiaTransporteService();
 const {
   createGuiaSchema,
-  getGuiaTransporteSchema,
-  updateGuiaTransporteSchema,
+
+  getGuiaSchema,
+  updateGuiaSchema,
 } = require("../middlewares/validationSchemas/guia.schema");
 
 guiaRouter.get("/", async (req, res, next) => {
@@ -33,7 +34,7 @@ guiaRouter.post(
 
 guiaRouter.get(
   "/:id",
-  validatorHandler(getGuiaTransporteSchema, "params"),
+  validatorHandler(getGuiaSchema, "params"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -47,8 +48,8 @@ guiaRouter.get(
 
 guiaRouter.put(
   "/:id",
-  validatorHandler(getGuiaTransporteSchema, "params"),
-  validatorHandler(updateGuiaTransporteSchema, "body"),
+  validatorHandler(getGuiaSchema, "params"),
+  validatorHandler(updateGuiaSchema, "body"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -66,7 +67,7 @@ guiaRouter.put(
 
 guiaRouter.delete(
   "/:id",
-  validatorHandler(getGuiaTransporteSchema, "params"),
+  validatorHandler(getGuiaSchema, "params"),
   async (req, res, next) => {
     try {
       const { id } = req.params;

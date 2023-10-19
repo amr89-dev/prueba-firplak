@@ -14,7 +14,6 @@ server.use(express.json());
 const ACCEPTED_ORIGINS = ["http://localhost:3001", "http://localhost:5173"];
 const corsOptions = {
   origin: (origin, callback) => {
-    console.log(origin);
     if (ACCEPTED_ORIGINS.includes(origin) || !origin) {
       callback(null, true);
     } else {
