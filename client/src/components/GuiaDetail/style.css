@@ -1,0 +1,11 @@
+/* Establece el ancho y la altura del control deslizante */
+
+input[type="range"].range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: yellow; /* Cambia el color de fondo del círculo */
+  border: 1px solid #f2f2f2; /* Borde del círculo */
+  border-radius: 50%; /* Hace que el círculo sea redondo */
+  cursor: pointer;
+}

@@ -24,8 +24,7 @@
   background-color: black;
   border-radius: 5px;
 }
-.table-wrapper::-webkit-scrollbar-track {
-}
+
 table {
   width: 100%;
   border-collapse: separate;
@@ -38,7 +37,7 @@ table th {
   top: 0px;
   text-align: start;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -51,7 +50,7 @@ table td {
 
 table td {
   text-align: left;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 20px;
   padding-left: 20px;
 }

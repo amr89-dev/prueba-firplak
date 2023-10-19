@@ -1,5 +1,7 @@
 export const API_URL = "http://localhost:3000";
 
+/*____________________________ USERS___________________________________ */
+
 export const createUser = async (data) => {
   const customer = {
     ...data,
@@ -101,6 +103,7 @@ export const retrieveUserInfo = async (accessToken) => {
     return { error: err };
   }
 };
+/*_____________________________CLIENTES___________________________________ */
 
 export const getClients = async () => {
   try {
@@ -112,17 +115,7 @@ export const getClients = async () => {
     return { error: err };
   }
 };
-export const getTransportadoras = async () => {
-  try {
-    const res = await fetch(`${API_URL}/api/v1/transportadora`);
-    if (!res.ok) throw { status: res.status, statusText: res.statusText };
-    const json = await res.json();
 
-    return json;
-  } catch (err) {
-    return { error: err };
-  }
-};
 export const getClientInfo = async (id) => {
   try {
     const res = await fetch(`${API_URL}/api/v1/cliente/${id}`);
@@ -134,6 +127,22 @@ export const getClientInfo = async (id) => {
     return { error: err };
   }
 };
+
+/*_____________________________TRANSPORTADORAS___________________________________ */
+
+export const getTransportadoras = async () => {
+  try {
+    const res = await fetch(`${API_URL}/api/v1/transportadora`);
+    if (!res.ok) throw { status: res.status, statusText: res.statusText };
+    const json = await res.json();
+
+    return json;
+  } catch (err) {
+    return { error: err };
+  }
+};
+
+/*_____________________________GUIAS___________________________________ */
 
 export const crearGuia = async (data) => {
   try {
@@ -169,7 +178,6 @@ export const getGuias = async () => {
 };
 
 export const patchGuia = async (id, data) => {
-  delete data.isOpen;
   try {
     const res = await fetch(`${API_URL}/api/v1/guia/${id}`, {
       method: "PUT",
@@ -185,6 +193,19 @@ export const patchGuia = async (id, data) => {
         statusText: res.statusText,
       };
     const json = await res.json();
+    return json;
+  } catch (err) {
+    return { error: err };
+  }
+};
+
+/*_____________________________DOCUMENTOS___________________________________ */
+export const getDocumentos = async () => {
+  try {
+    const res = await fetch(`${API_URL}/api/v1/documento`);
+    if (!res.ok) throw { status: res.status, statusText: res.statusText };
+    const json = await res.json();
+
     return json;
   } catch (err) {
     return { error: err };

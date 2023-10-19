@@ -12,7 +12,7 @@ export default {
         lexen: ["Lexend Mega", "sans-serif"],
       },
       boxShadow: {
-        aCus: "4px 4px 4px rgba(0, 0, 0, 0)",
+        sombra: "4px 4px black",
       },
       animation: {
         ping2: "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite",

@@ -1,8 +1,11 @@
 import { useContext } from "react";
 import "./style.css";
 import { GuiaContext } from "../../contexts/guiaContex";
+import { Link } from "react-router-dom";
+import { DocumentoContext } from "../../contexts/documentoContext";
 const Overview = () => {
   const { guias } = useContext(GuiaContext);
+  const { documentos } = useContext(DocumentoContext);
   const guiasEnRuta = guias.filter((guia) => {
     return guia.estado === "En Ruta";
   });
@@ -15,7 +18,7 @@ const Overview = () => {
       <section className=" flex flex-row py-6 px-8 items-center justify-between">
         <div className="  h-auto border-2 border-black rounded flex flex-col p-4 bg-sky-200 sombra">
           <h4 className="font-semibold text-sm ">Documentos de Entrega</h4>
-          <p className="font-bold text-2xl">{guias.length}</p>
+          <p className="font-bold text-2xl">{documentos?.length}</p>
         </div>
         <div className="  h-auto border-2 border-black rounded flex flex-col p-4 bg-red-200 sombra">
           <h4 className="font-semibold text-sm">Guias Generadas</h4>
@@ -31,18 +34,19 @@ const Overview = () => {
         </div>
       </section>
       <section className=" flex flex-row py-6 px-8 items-start justify-around h-3/4 ">
-        <div className=" w-80 h-[80%] border-2 border-black rounded flex flex-col p-4 sombra ">
-          <h4 className="font-semibold text-sm">Novedades</h4>
+        <div className=" w-80 h-[80%] border-2 border-black rounded flex flex-col p-4 sombra bg-amber-100">
+          <h4 className="font-bold">Novedades</h4>
           <p>No hay novedades en las entregas</p>
         </div>
-        <div className=" w-[60%] h-[80%] border-2 border-black rounded flex flex-col p-4 sombra ">
-          <h4 className="font-semibold text-sm ">Ultimas Guias Generadas</h4>
+        <div className=" w-[60%] h-[80%] border-2 border-black rounded flex flex-col p-4 sombra bg-indigo-100 ">
+          <h4 className="font-bold  ">Ultimas Guias Generadas</h4>
           <ul className=" overflow-y-scroll max-h-full flex flex-col gap-2 p-2">
             {guias.map((guia) => {
               return (
-                <li
+                <Link
+                  to={`guias/${guia?.id}`}
                   key={guia?.id}
-                  className="p-2 text-xs flex flex-row gap-2 border-2 border-black rounded items-center justify-start sombra cursor-pointer hover:shadow hover:bg-red-100"
+                  className=" bg-white p-2 text-xs flex flex-row gap-2 border-2 border-black rounded items-center justify-start sombra cursor-pointer hover:shadow hover:bg-indigo-100"
                 >
                   <span className=" h-1 w-1 ml-2 rounded-full m-1 bg-yellow-400 "></span>
 
@@ -55,7 +59,7 @@ const Overview = () => {
                   </span>
                   <span>{guia?.destino}</span>
                   <span>{guia?.Cliente.nombreCliente}</span>
-                </li>
+                </Link>
               );
             })}
           </ul>

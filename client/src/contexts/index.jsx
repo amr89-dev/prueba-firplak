@@ -1,5 +1,6 @@
 import AuthContextProvider from "./authContex";
 import ClientsContextProvider from "./clientsContex";
+import DocumentContextProvider from "./documentoContext";
 import ErrorLoadingProvider from "./errorLoadingContex";
 import GuiaContextProvider from "./guiaContex";
 import TransportadoraContextProvider from "./transportadorasContext";
@@ -8,13 +9,15 @@ import TransportadoraContextProvider from "./transportadorasContext";
 const MainContextProvider = ({ children }) => {
   return (
     <AuthContextProvider>
-      <GuiaContextProvider>
-        <ClientsContextProvider>
-          <TransportadoraContextProvider>
-            <ErrorLoadingProvider>{children}</ErrorLoadingProvider>
-          </TransportadoraContextProvider>
-        </ClientsContextProvider>
-      </GuiaContextProvider>
+      <DocumentContextProvider>
+        <GuiaContextProvider>
+          <ClientsContextProvider>
+            <TransportadoraContextProvider>
+              <ErrorLoadingProvider>{children}</ErrorLoadingProvider>
+            </TransportadoraContextProvider>
+          </ClientsContextProvider>
+        </GuiaContextProvider>
+      </DocumentContextProvider>
     </AuthContextProvider>
   );
 };

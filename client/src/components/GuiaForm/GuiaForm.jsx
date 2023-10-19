@@ -12,7 +12,7 @@ const GuiaForm = () => {
   const [clienteToSearch, setClienteToSearch] = useState("");
   const [transToSearch, setTransToSearch] = useState("");
   const { DocumentoEntregas: documentosEntrega } = clienteInfo;
-  const [formData, setformData] = useState({
+  const initialState = {
     clienteId: "",
     transportadoraId: "",
     fechaDespacho: new Date()
@@ -22,7 +22,8 @@ const GuiaForm = () => {
       .join("-"),
     destino: "",
     documentoEntregaId: [],
-  });
+  };
+  const [formData, setformData] = useState(initialState);
   useEffect(() => {
     clienteToSearch.length > 0 && getInfo();
   }, [clienteToSearch]);
@@ -86,17 +87,18 @@ const GuiaForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     generateGuia(formData);
+    setformData(initialState);
   };
   return (
     <article className=" w-full  p-2 flex flex-col items-center justify-center">
       <section className="sombra border-black border-2 rounded  w-full h-full p-4 bg-yellow-100 ">
-        <h3 className="text-xl font-semibold mb-2">Generar guia:</h3>
+        <h4 className="font-bold mb-4">Generar guia:</h4>
         <form
           onSubmit={handleSubmit}
-          className="flex flex-row flex-wrap text-sm"
+          className="flex flex-row flex-wrap text-sm gap-4"
         >
           <div className="flex flex-col gap-1 mr-2 mb-2">
-            <label className="mt-1 text-base" htmlFor="cliente ">
+            <label className="mt-1 " htmlFor="cliente ">
               Cliente:
             </label>
             <input
@@ -105,7 +107,7 @@ const GuiaForm = () => {
               type="text"
               list="clientes"
               id="cliente"
-              className="border-2 rounded border-black sombra placeholder:text-xs"
+              className=" h-8 border-2 rounded border-black sombra text-sm placeholder:text-xs"
               name="cliente"
               placeholder="Busca un cliente"
             />
@@ -118,7 +120,7 @@ const GuiaForm = () => {
             </datalist>
           </div>
           <div className="flex flex-col gap-1 mr-2 mb-2">
-            <label className="mt-1 text-base" htmlFor="cliente">
+            <label className="mt-1 " htmlFor="cliente">
               Destino:
             </label>
             <input
@@ -127,7 +129,7 @@ const GuiaForm = () => {
               type="text"
               list="desti"
               id="destino"
-              className="border-2 rounded border-black sombra placeholder:text-xs"
+              className=" h-8 border-2 rounded  border-black sombra text-sm placeholder:text-xs"
               name="destino"
               placeholder="Busca una sucursal"
             />
@@ -138,7 +140,7 @@ const GuiaForm = () => {
             </datalist>
           </div>
           <div className="flex flex-col gap-1 mr-2 mb-2">
-            <label className="mt-1 text-base" htmlFor="transportadora">
+            <label className="mt-1 " htmlFor="transportadora">
               Transportadora:
             </label>
             <input
@@ -147,7 +149,7 @@ const GuiaForm = () => {
               type="text"
               list="trans"
               id="transportadora"
-              className="border-2 rounded border-black sombra placeholder:text-xs"
+              className=" h-8 border-2 rounded border-black sombra text-sm placeholder:text-xs"
               name="transportadora"
               placeholder="Elige una transportadora"
             />
@@ -162,7 +164,7 @@ const GuiaForm = () => {
             </datalist>
           </div>
           <div className="flex flex-col gap-1 mr-2 mb-2">
-            <label className="mt-1 text-base" htmlFor="date">
+            <label className="mt-1 " htmlFor="date">
               Fecha despacho:
             </label>
             <input
@@ -171,11 +173,11 @@ const GuiaForm = () => {
               type="date"
               name="fechaDespacho"
               id="date"
-              className="border-2 rounded border-black sombra "
+              className=" h-8 border-2 rounded border-black  text-sm sombra "
             />
           </div>
           <div className="flex flex-col gap-1 mr-2 mb-2">
-            <label className="mt-1 text-base" htmlFor="cliente">
+            <label className="mt-1 " htmlFor="cliente">
               Documentos de entrega:
             </label>
             <input
@@ -187,7 +189,7 @@ const GuiaForm = () => {
               type="text"
               list="docu"
               id="documento"
-              className="border-2 rounded border-black sombra placeholder:text-xs "
+              className=" h-8 border-2 rounded border-black sombra text-sm placeholder:text-xs "
               name="documentos"
               placeholder="Añade documentos"
             />
@@ -205,7 +207,7 @@ const GuiaForm = () => {
           <div className="flex flex-col justify-end items-center mr-2 mb-2">
             <button
               type="submit"
-              className="border-2 rounded border-black sombra text-base font-bold  p-2 mt-1 bg-white hover:bg-yellow-100"
+              className=" h-8 border-2 rounded border-black sombra text-base font-bold  p-2 py-3 flex items-center bg-white hover:bg-yellow-100"
             >
               Generar
             </button>

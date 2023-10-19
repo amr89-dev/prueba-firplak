@@ -14,7 +14,7 @@ const GuiaRow = ({ data }) => {
       <td>{data?.Cliente.nombreCliente}</td>
       <td>{data?.destino}</td>
       <td>{data?.Transportadora.nombre}</td>
-      <td>{data?.numeroConsecutivo}</td>
+      <td>GD-00{data?.numeroConsecutivo}</td>
     </tr>
   );
 };

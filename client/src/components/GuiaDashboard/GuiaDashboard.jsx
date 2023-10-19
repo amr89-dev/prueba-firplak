@@ -3,7 +3,7 @@ import GuiaTable from "../GuiaTable/GuiaTable";
 
 const GuiaDashboard = () => {
   return (
-    <div className=" grid grid-rows-2">
+    <div className=" grid grid-rows-2 px-8 ">
       <GuiaForm />
       <GuiaTable />
     </div>
