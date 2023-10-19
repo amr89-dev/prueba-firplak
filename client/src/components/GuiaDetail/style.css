@@ -4,8 +4,22 @@ input[type="range"].range::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 20px;
   height: 20px;
-  background: yellow; /* Cambia el color de fondo del círculo */
-  border: 1px solid #f2f2f2; /* Borde del círculo */
-  border-radius: 50%; /* Hace que el círculo sea redondo */
+  background: grey;
+  border: 1px solid #f2f2f2;
+  border-radius: 50%;
   cursor: pointer;
+  margin-top: -15px;
+}
+
+input[type="range"].range-green::-webkit-slider-thumb {
+  background: greenyellow;
+  margin-top: -15px;
+}
+input[type="range"].range-yellow::-webkit-slider-thumb {
+  background: yellow;
+  margin-top: -15px;
+}
+input[type="range"].range-red::-webkit-slider-thumb {
+  background: red;
+  margin-top: -15px;
 }

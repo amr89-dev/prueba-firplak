@@ -22,7 +22,15 @@ const GuiaDetail = () => {
     Novedad: 66,
     Entregado: 99,
   };
+  const classValues = {
+    Generada: "range",
+    "En Ruta": "range-yellow",
+    Novedad: "range-red",
+    Entregado: "range-green",
+  };
   const stepValue = rangeValues[guia?.estado];
+  const classColor = classValues[guia?.estado];
+
   const toggleInput = () => {
     setInputIsOpen(!inputIsOpen);
   };
@@ -47,8 +55,9 @@ const GuiaDetail = () => {
           min={0}
           max={99}
           step={33}
-          className=" w-3/4 appearance-none border-transparent bg-neutral-200 rounded range h-2 "
+          className={` w-3/4 appearance-none border-transparent bg-neutral-200 rounded h-2 ${classColor}  `}
           list="tickmarks"
+          value={stepValue}
           defaultValue={stepValue}
         />
         <datalist id="tickmarks">
