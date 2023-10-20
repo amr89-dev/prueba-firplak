@@ -80,13 +80,19 @@ const loadDocumentos = async () => {
         codVerificacion: Date.now().toString(36),
       };
     });
+
     if (docWithId.length <= 0) {
       throw new Error("No se encontrarlos clientes");
     }
     const count = await DocumentoEntrega.count();
+
     if (count <= 0) {
-      await DocumentoEntrega.bulkCreate(docWithId, { include: ["cliente"] });
-      console.log("Documentos creados");
+      docWithId.forEach(async (doc) => {
+        const newDoc = await DocumentoEntrega.create(doc, {
+          include: ["cliente"],
+        });
+      });
+      console.log("Documentos creados exitosamente");
     }
   } catch (err) {
     console.log(err);

@@ -48,14 +48,14 @@ const GuiaDetail = () => {
   };
   console.log();
   return (
-    <section>
+    <section className="bg-blue-500 h-screen">
       <div className="flex flex-row items-center justify-center mt-10">
         <input
           type="range"
           min={0}
           max={99}
           step={33}
-          className={` w-3/4 appearance-none border-transparent bg-neutral-200 rounded h-2 ${classColor}  `}
+          className={` w-3/4 appearance-none border-transparent bg-white rounded h-2  ${classColor}  `}
           list="tickmarks"
           value={stepValue}
           defaultValue={stepValue}

@@ -14,12 +14,13 @@ const GuiaTable = () => {
           <table className="table-auto ">
             <thead className=" ">
               <tr>
+                <th></th>
+                <th>#</th>
                 <th>Estado:</th>
                 <th>Fecha:</th>
                 <th>Cliente:</th>
                 <th>Destino:</th>
                 <th>Transportadora:</th>
-                <th>#</th>
               </tr>
             </thead>
             <tbody>
